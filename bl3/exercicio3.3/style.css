@@ -1,0 +1,16 @@
+header {
+    text-align: center;
+}
+header nav {
+    text-align: start;
+    display: inline-block;
+}
+
+.facts{
+    max-width: max-content;
+    border: 3px solid blue;
+}
+
+.facts ul li {
+    list-style: none;
+}
