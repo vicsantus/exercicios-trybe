@@ -61,4 +61,3 @@ for (let x = 0; x < numbers.length; x++){
     numbers[x] = numbers[x] * numbers[x + 1];
   }
 }
-console.log(numbers);
