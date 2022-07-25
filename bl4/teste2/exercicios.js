@@ -53,11 +53,16 @@ console.log(numbers);
 numbers.reverse();
 console.log(numbers);
 
+///////////
+
 numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
+let novoNumbers = [];
+
 for (let x = 0; x < numbers.length; x++){
   if (x === numbers.length - 1){
-    numbers[numbers.length - 1] = 27 * 2;
+    novoNumbers[numbers.length - 1] = numbers[x] * 2;
   } else {
-    numbers[x] = numbers[x] * numbers[x + 1];
+    novoNumbers[x] = numbers[x] * numbers[x + 1];
   }
 }
+console.log(novoNumbers);
