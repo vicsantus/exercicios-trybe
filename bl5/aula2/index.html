@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício 5.2</title>
+    <style>
+      section {
+        border-color: black;
+        border-style: solid;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function addFilho(pai, filho) {
+        pai.appendChild(document.createElement(filho));
+      }
+
+      let corpo = document.getElementsByTagName('body')[0];
+      addFilho(corpo, 'h1');
+      corpo.children[1].innerHTML = 'Exercício 5.2 - JavaScript DOM';
+      addFilho(corpo, 'main');
+      let mein = document.getElementsByTagName('main')[0];
+      mein.className = 'main-content';
+      addFilho(mein, 'section');
+      mein.children[0].className = 'center-content';
+      document.querySelector('.center-content').appendChild(document.createElement('p'));
+      addFilho(mein, 'section');
+      mein.children[1].className = 'left-content';
+      addFilho(mein, 'section');
+      mein.children[2].className = 'right-content';
+      addFilho(document.querySelector('.left-content'), 'img');
+      document.querySelector('.left-content').children[0].src = 'https://picsum.photos/200';
+      let rightContent = document.querySelector('.right-content');
+      addFilho(rightContent, 'ul');
+      let extenso = ['um', 'dois', 'tres', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez']
+      for (let l = 0; l < 10; l += 1) {
+        addFilho(rightContent.children[0], 'li')
+        rightContent.children[0].children[l].innerHTML = extenso[l];
+      }
+      addFilho(mein, 'h3');
+      addFilho(mein, 'h3');
+      addFilho(mein, 'h3');
+      corpo.children[1].className = 'title';
+      mein.children[3].className = 'description';
+      mein.children[4].className = 'description';
+      mein.children[5].className = 'description';
+      mein.removeChild(mein.children[1]);
+      document.querySelector('.right-content').style.marginRight = 'auto';
+      document.querySelector('.main-content').parentElement.style.backgroundColor = 'green';
+
+      rightContent.children[0].removeChild(rightContent.children[0].children[9]);
+      rightContent.children[0].removeChild(rightContent.children[0].children[8]);
+    </script>
+  </body>
+</html>
