@@ -55,6 +55,7 @@ function zoomout(origem) {
 function adicionaEvento() {
   if (caixinha.value !== '') {
     tarefas.appendChild(document.createElement('span'));
+    tarefas.children[tarefas.children.length - 1].className = 'tasks';
     tarefas.children[tarefas.children.length - 1].innerHTML = caixinha.value;
   }
 }
@@ -63,6 +64,15 @@ function legendaCor(cor) {
   let elemento = tarefas.children[tarefas.children.length - 1];
   elemento.className = 'task';
   elemento.style.backgroundColor = cor;
+}
+function trocaClasse() {
+  if (botaoCor.className === 'task') {
+    botaoCor.className += ' selected';
+    botaoCor.style.border = '3px solid black';
+  } else {
+    botaoCor.className = 'task';
+    botaoCor.style.border = '1px solid black';
+  }
 }
 
 
@@ -94,11 +104,9 @@ let caixinha = document.querySelector('#task-input');
 let tarefas = document.querySelector('.my-tasks');
 
 legendaCor('green')
+let botaoCor = document.querySelector('.task');
 
 botaoFeriado.addEventListener('click', trocaCor);
 botaoSextou.addEventListener('click', trocaSextou);
 botaoEvento.addEventListener('click', adicionaEvento);
-
-
-
-
+botaoCor.addEventListener('click', trocaClasse);
