@@ -80,6 +80,22 @@ function atribCorDia(origem) {
     origem.target.style.color = 'rgb(119, 119, 119)';
   }
 }
+function pressionado(evento) {
+  if (evento.keyCode == 13) {
+    addCompromisso();
+  }
+}
+function addCompromisso() {
+  if (caixinha.value !== '') {
+  compromissoUl.appendChild(document.createElement('li'));
+  let compro = compromissoUl.children[compromissoUl.children.length - 1];
+  compro.innerHTML = caixinha.value;
+  caixinha.value = '';
+  } else {
+    alert('Nada foi digitado.')
+  }
+}
+
 
 
 
@@ -112,6 +128,8 @@ let botaoEvento = document.querySelector('#btn-add');
 let caixinha = document.querySelector('#task-input');
 let tarefas = document.querySelector('.my-tasks');
 let dias = document.querySelectorAll('.day');
+let compromissoUl = document.querySelector('.task-list');
+
 
 legendaCor('green')
 let botaoCor = document.querySelector('.task');
@@ -120,3 +138,5 @@ let botaoCor = document.querySelector('.task');
 botaoFeriado.addEventListener('click', trocaCor);
 botaoSextou.addEventListener('click', trocaSextou);
 botaoCor.addEventListener('click', trocaClasse);
+caixinha.addEventListener('keyup', pressionado)
+botaoEvento.addEventListener('click', addCompromisso);
