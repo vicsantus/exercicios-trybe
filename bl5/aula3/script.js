@@ -53,9 +53,9 @@ function sextou() {
 function trocaSextou() {
   let sextas = document.querySelectorAll('.friday');
   for (let dia of sextas) {
-    if (dia.innerHTML !== 'Sextou') {
+    if (dia.innerHTML !== 'Sextou!') {
       dia.value = dia.innerHTML;
-      dia.innerHTML = 'Sextou';
+      dia.innerHTML = 'Sextou!';
     } else {
       dia.innerHTML = dia.value;
       dia.value = 0;
@@ -70,13 +70,23 @@ function zoomout(origem) {
   origem.target.style.fontSize = '20px';
   origem.target.style.fontWeight = '';
 }
+function adicionaEvento(origem) {
+  let caixinha = document.querySelector('#task-input');
+  let tarefas = document.querySelector('.my-tasks');
+  if (caixinha.value !== '') {
+    tarefas.appendChild(document.createElement('span'));
+    tarefas.children[tarefas.children.length - 1].innerHTML = caixinha.value;
+  }
+}
 
 
 feriados();
 sextou();
 let botaoFeriado = document.querySelector('.buttons-container').children[0];
 let botaoSextou = document.querySelector('.buttons-container').children[1];
+let botaoEvento = document.querySelector('#btn-add');
 
 botaoFeriado.addEventListener('click', trocaCor);
 botaoSextou.addEventListener('click', trocaSextou);
+botaoEvento.addEventListener('click', adicionaEvento);
 
