@@ -53,11 +53,10 @@ function zoomout(origem) {
   origem.target.style.fontWeight = '';
 }
 function adicionaEvento() {
-  if (caixinha.value !== '') {
-    tarefas.appendChild(document.createElement('span'));
-    tarefas.children[tarefas.children.length - 1].className = 'tasks';
-    tarefas.children[tarefas.children.length - 1].innerHTML = caixinha.value;
-  }
+  let tarefas = document.querySelector('.my-tasks');
+  tarefas.appendChild(document.createElement('span'));
+  tarefas.children[tarefas.children.length - 1].className = 'tasks';
+  tarefas.children[tarefas.children.length - 1].innerHTML = 'Projeto:';
 }
 function legendaCor(cor) {
   tarefas.appendChild(document.createElement('div'));
@@ -105,6 +104,7 @@ for (let x in decemberDaysList) {
 createDaysOfTheWeek();
 feriados();
 sextou();
+adicionaEvento();
 
 let botaoFeriado = document.querySelector('.buttons-container').children[0];
 let botaoSextou = document.querySelector('.buttons-container').children[1];
@@ -116,7 +116,7 @@ let dias = document.querySelectorAll('.day');
 legendaCor('green')
 let botaoCor = document.querySelector('.task');
 
+
 botaoFeriado.addEventListener('click', trocaCor);
 botaoSextou.addEventListener('click', trocaSextou);
-botaoEvento.addEventListener('click', adicionaEvento);
 botaoCor.addEventListener('click', trocaClasse);
