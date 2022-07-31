@@ -74,6 +74,13 @@ function trocaClasse() {
     botaoCor.style.border = '1px solid black';
   }
 }
+function atribCorDia(origem) {
+  if (origem.target.style.color === 'rgb(119, 119, 119)' && botaoCor.className === 'task selected') {
+    origem.target.style.color = document.querySelector('.task').style.backgroundColor;
+  } else if (origem.target.style.color !== 'rgb(119, 119, 119)' && botaoCor.className === 'task selected') {
+    origem.target.style.color = 'rgb(119, 119, 119)';
+  }
+}
 
 
 
@@ -83,6 +90,7 @@ for (let x in decemberDaysList) {
   days.appendChild(document.createElement('li'));
   days.children[x].innerHTML = dia;
   days.children[x].className = 'day';
+  days.children[x].style.color = 'rgb(119,119,119)';
   if (dia === 24 || dia === 25 || dia === 31) {
     days.children[x].className += ' holiday';
   }
@@ -91,6 +99,7 @@ for (let x in decemberDaysList) {
   }
   days.children[x].addEventListener('mouseover', zoomin);
   days.children[x].addEventListener('mouseout', zoomout);
+  days.children[x].addEventListener('click', atribCorDia);
 }
 
 createDaysOfTheWeek();
@@ -102,6 +111,7 @@ let botaoSextou = document.querySelector('.buttons-container').children[1];
 let botaoEvento = document.querySelector('#btn-add');
 let caixinha = document.querySelector('#task-input');
 let tarefas = document.querySelector('.my-tasks');
+let dias = document.querySelectorAll('.day');
 
 legendaCor('green')
 let botaoCor = document.querySelector('.task');
