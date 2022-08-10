@@ -49,6 +49,11 @@ body {
   font-size: 20px;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .main-content p {
   font-size: 20px;
 }
