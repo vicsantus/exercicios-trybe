@@ -8,10 +8,11 @@
 
 *, *:before, *:after {
   box-sizing: inherit;
+  font-size: larger;
 }
 
 body {
-  margin: 30px;
+  margin: 40px;
 }
 
 article {
@@ -19,7 +20,7 @@ article {
 }
 
 h1 {
-
+  font-size: 50px;
 }
 
 h2 {
@@ -31,7 +32,9 @@ img {
 }
 
 main {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 section {
@@ -53,20 +56,31 @@ figcaption {
   font-size: .8em;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (min-width: 850px) and (max-width: 1050px) {
   * {
-    font-size: larger;
+    font-size: large;
     color: white;
     background-color: black;
   }
 
-  h1 {
-    font-size: 50px;
+  body {
+    margin: 30px;
   }
 
-  main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+}
+
+@media screen and (min-width: 1051px) {
+  * {
+    background-color: darkkhaki;
+    font-size: medium;
+  }
+
+  body {
+    margin: 40px;
+    max-width: 1800px;
+  }
+
+  main h2 {
+    font-size: x-large;
   }
 }
