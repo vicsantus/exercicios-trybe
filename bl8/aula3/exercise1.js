@@ -66,7 +66,7 @@ function formatedBookNames(data) {
   return data.map(livro => `${livro.name} - ${livro.genre} - ${livro.author.name}`)
 }
 
-console.log(formatedBookNames(books));
+// console.log(formatedBookNames(books));
 
 
 function nameAndAge(data) {
@@ -77,13 +77,13 @@ function nameAndAge(data) {
   novoObj.sort((a, b) => a.age - b.age);
   return novoObj
 }
-console.log(nameAndAge(books));
+// console.log(nameAndAge(books));
 
 
 function fantasyOrScienceFiction(data) {
   return data.filter(livro => (livro.genre === 'Fantasia' || livro.genre === 'Ficção Científica'));
 }
-console.log(fantasyOrScienceFiction(books));
+// console.log(fantasyOrScienceFiction(books));
 
 
 function oldBooksOrdered(data) {
@@ -91,4 +91,34 @@ function oldBooksOrdered(data) {
   livro60.sort((a, b) => a.releaseYear - b.releaseYear);
   return livro60
 }
-console.log(oldBooksOrdered(books));
+// console.log(oldBooksOrdered(books));
+
+
+function fantasyOrScienceFictionAuthors(data) {
+  const livros = data.filter(livro => (livro.genre === 'Fantasia' || livro.genre === 'Ficção Científica'));
+  return livros.map(lib => lib.author.name);
+}
+// console.log(fantasyOrScienceFictionAuthors(books));
+
+
+function oldBooks(data) {
+  const obj = data.filter(livros => (2022 - livros.releaseYear) > 60);
+  return obj.map(livros => livros.name)
+}
+// console.log(oldBooks(books))
+
+
+function authorWith3DotsOnName(data) {
+  // const autor = data.filter(livros => {
+  //   // const obj = livros.author.name.split('. ');
+  //   // if (obj.length > 3) {
+  //   //   return obj;
+  //   // }
+  // })
+  // return autor.map(elem => elem.author.name)[0]
+  return data.find((livros) => (
+    livros.author.name.split(' ')
+      .filter((palavra) => palavra.endsWith('.')).length === 3
+  )).name;
+}
+console.log(authorWith3DotsOnName(books));
