@@ -37,7 +37,7 @@ const nextBtn = document.querySelector('#next');
 nextBtn.addEventListener('click', () => {
   store.dispatch(nextAction)
 });
-
+// fim
 store.subscribe(() => {
   const valor = document.querySelector('#value');
   const container = document.querySelector('#container')
