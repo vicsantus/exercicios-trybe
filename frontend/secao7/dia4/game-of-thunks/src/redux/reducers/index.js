@@ -14,7 +14,6 @@ const getObjReducer = (state = INITIAL_STATE, action) => {
         isntLoading: false,
       });
     case RECEIVE_FETCH:
-      console.log(action.payload[0]);
       return ({
         ...state,
         data: action.payload,
