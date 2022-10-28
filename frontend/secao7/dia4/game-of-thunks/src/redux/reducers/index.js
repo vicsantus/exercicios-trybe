@@ -6,27 +6,28 @@ const INITIAL_STATE = {
   error: '',
 };
 
-const reducer = (state = INITIAL_STATE, action) => {
+const getObjReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_FETCH:
-      return {
+      return ({
         ...state,
         isntLoading: false,
-      };
+      });
     case RECEIVE_FETCH:
-      return {
+      console.log(action.payload[0]);
+      return ({
+        ...state,
         data: action.payload,
         isntLoading: true,
-        ...state,
-      };
+      });
     case FETCH_ERROR:
-      return {
+      return ({
         ...state,
         error: action.payload,
-      };
+      });
     default:
       return state;
   }
 };
 
-export default reducer;
+export default getObjReducer;
