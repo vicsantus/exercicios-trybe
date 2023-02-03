@@ -25,14 +25,11 @@ signUp.post('/', postKeysValidation, async (req, res) => {
   const { email, password, firstName, phone } = req.body;
   const tokenGen = makeToken();
   const users = await readUserJson();
-  console.log(users);
   users.push({
     [tokenGen]: {email, password, firstName, phone}
   })
 
   await fs.writeFile('./src/files/users.json', JSON.stringify(users));
-
-  console.log(users);
 
   return res
     .status(200).json({ "token": `${tokenGen}` })
