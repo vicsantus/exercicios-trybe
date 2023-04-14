@@ -1,0 +1,178 @@
+use('cinema');
+
+// db.movies.drop();
+// db.movies.insertMany([
+//   {
+//     title: "Batman",
+//     category: [
+//       "action",
+//       "adventure",
+//     ],
+//     imdbRating: 7.7,
+//     budget: 35,
+//   },
+//   {
+//     title: "Godzilla",
+//     category: [
+//       "action",
+//       "adventure",
+//       "sci-fi",
+//     ],
+//     imdbRating: 6.6,
+//     budget: 1,
+//   },
+//   {
+//     title: "Home Alone",
+//     category: [
+//       "family",
+//       "comedy",
+//     ],
+//     imdbRating: 7.4,
+//   },
+// ]);
+
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $push: {
+//       category: "superhero"
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $push: {
+//       category: {
+//         $each: ['villain', 'comic-based']
+//       }
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $pull: {
+//       category: {
+//         $eq: 'action'
+//       }
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $pop: {
+//       category: -1
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $pop: {
+//       category: 1
+//     }
+//   }
+// )
+
+// db.movies.updateMany(
+//   { $or: [{ title: 'Batman' }, { title: 'Home Alone' }] },
+//   {
+//     $addToSet: {
+//       category: { $each: ["90's"] }
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Home Alone' },
+//   {
+//     $set: {
+//       cast: [{
+//         "actor": "Macaulay Culkin",
+//         "character": "Kevin"
+//       },
+//       {
+//         "actor": "Joe Pesci",
+//         "character": "Harry"
+//       },
+//       {
+//         "actor": "Daniel Stern"
+//       }]
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Home Alone' },
+//   {
+//     $set: {
+//       'cast.$[daniel].character': 'Marv'
+//     }
+//   },
+//   { arrayFilters: [{ 'daniel.actor': 'Daniel Stern' }], upsert: true }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $set: {
+//       cast: [{
+//         "character": "Batman"
+//       },
+//       {
+//         "character": "Alfred"
+//       },
+//       {
+//         "character": "Coringa"
+//       }]
+//     }
+//   }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $push: {
+//       'cast.$[cast].actor': 'Christian Bale'
+//     }
+//   },
+//   { arrayFilters: [{ 'cast.character': 'Batman' }], upsert: true }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $push: {
+//       'cast.$[cast].actor': 'Michael Caine'
+//     }
+//   },
+//   { arrayFilters: [{ 'cast.character': 'Alfred' }], upsert: true }
+// )
+
+// db.movies.updateOne(
+//   { title: 'Batman' },
+//   {
+//     $push: {
+//       'cast.$[cast].actor': 'Heath Ledger'
+//     }
+//   },
+//   { arrayFilters: [{ 'cast.character': 'Coringa' }], upsert: true }
+// )
+
+db.movies.updateOne(
+  { title: 'Batman', 'cast.character': 'Batman' },
+  {
+    $push: {
+      'cast.$.actor': { $each: [], $sort: 1 }
+    }
+  }
+)
+
+db.movies.find();
